@@ -37,6 +37,7 @@ function slidesuivant() {
         currentSlide = 0;
     }
     showSlide();
+	updateDots();
 }
 
 function slideprecedent() {
@@ -45,7 +46,23 @@ function slideprecedent() {
         currentSlide = slides.length - 1;
     }
 	showSlide();
+	updateDots();
 }
+
+const dotsContainer = document.querySelector('.dots');
+const dots = dotsContainer.querySelectorAll('.dot');
+
+function updateDots() {
+    dots.forEach((dot, index) => {
+        if (index === currentSlide) {
+            dot.classList.add('dot_selected');
+        } else {
+            dot.classList.remove('dot_selected');
+        }
+    });
+}
+
+updateDots();
 
 
 
