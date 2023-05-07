@@ -17,34 +17,38 @@ const slides = [
 	}
 ];
 
+const bannerImg = document.querySelector('.banner-img');
+const tagLine = document.querySelector('#banner p');
 const arrowLeft = document.querySelector('.arrow_left');
 const arrowRight = document.querySelector('.arrow_right');
+let currentSlide = 0;
 
 arrowLeft.addEventListener('click', slideprecedent);
 arrowRight.addEventListener('click', slidesuivant);
 
-
-const bannerImg = document.querySelector('.banner-img');
-const tagLine = document.querySelector('#banner p');
-
-let currentSlide = 0;
-
-function slide() {
+function showSlide() {
     bannerImg.src = './assets/images/slideshow/' + slides[currentSlide].image;
     tagLine.innerHTML = slides[currentSlide].tagLine;
 }
 
 function slidesuivant() {
     currentSlide++;
-    slide();
+    if (currentSlide >= slides.length) {
+        currentSlide = 0;
+    }
+    showSlide();
 }
 
 function slideprecedent() {
-    currentSlide--;   
-	slide();
+    currentSlide--;
+    if (currentSlide < 0) {
+        currentSlide = slides.length - 1;
+    }
+	showSlide();
 }
 
-const dots = document.querySelector('.dots');
+
+
 
 
 
